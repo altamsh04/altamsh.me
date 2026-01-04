@@ -41,7 +41,7 @@ export default function AdminLoginPage() {
           role: response.role,
           last_logged_in: response.last_logged_in
         }))
-        router.push("/blogs/notadmin")
+        router.push("/blogs/dashboard")
       } else {
         setError(response.message || "Login failed")
       }

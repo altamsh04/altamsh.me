@@ -90,7 +90,7 @@ const experienceData = {
       title: "Software Developer",
       company: "Embeetek Technologies · SDE Freelance",
       icon: "https://res.cloudinary.com/dhbuw3k2w/image/upload/v1744040070/embeetek.com/logo.png",
-      location: "Miraj Maharashtra, India · Hybrid",
+      location: "Miraj Maharashtra, India · Remote",
       startDate: "2025-01-01",
       endDate: "2025-06-01",
       current: false,
