@@ -1,104 +1,68 @@
-"use client"
-
-import { useState, useEffect } from "react"
-import { useParams } from "next/navigation"
-import { useTheme } from "next-themes"
-import { getBlogBySlug, Blog } from "@/lib/api"
+import { getBlogBySlug, getAllBlogSlugs } from "@/lib/blogs"
+import { notFound } from "next/navigation"
+import Link from "next/link"
 import Image from "next/image"
-import { Calendar, ArrowLeft, Moon, Sun } from "lucide-react"
+import { Calendar, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { useRouter } from "next/navigation"
-import ReactMarkdown from "react-markdown"
-import remarkGfm from "remark-gfm"
+import { ThemeToggle } from "@/components/theme-toggle"
+import { BlogMarkdown } from "@/components/blog-markdown"
 
-export default function BlogPostPage() {
-  const params = useParams()
-  const router = useRouter()
-  const slug = params?.slug as string
-  const [blog, setBlog] = useState<Blog | null>(null)
-  const [loading, setLoading] = useState(true)
-  const { theme, setTheme } = useTheme()
+export const dynamicParams = false
 
-  useEffect(() => {
-    if (process.env.NEXT_PUBLIC_BLOGS_FEATURE !== "true") {
-      router.push("/")
-      return
-    }
-    if (slug) {
-      fetchBlog()
-    }
-  }, [slug, router])
+export async function generateStaticParams() {
+  const slugs = getAllBlogSlugs()
+  return slugs.map((slug) => ({
+    slug,
+  }))
+}
 
-  const fetchBlog = async () => {
-    try {
-      setLoading(true)
-      const data = await getBlogBySlug(slug)
-      setBlog(data)
-    } catch (error) {
-      console.error("Error fetching blog:", error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const formatDate = (dateString?: string) => {
-    if (!dateString) return ""
-    const date = new Date(dateString)
-    return date.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    })
-  }
-
-  if (loading) {
-    return (
-      <div className="container mx-auto px-4 py-16 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 dark:border-gray-100 mx-auto"></div>
-          <p className="mt-4 text-muted-foreground">Loading blog post...</p>
-        </div>
-      </div>
-    )
-  }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const blog = getBlogBySlug(slug)
 
   if (!blog) {
-    return (
-      <div className="container mx-auto px-4 py-16 min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Blog Post Not Found</h1>
-          <Button onClick={() => router.push("/blogs")}>
-            <ArrowLeft className="h-4 w-4 mr-2" />
-            Back to Blogs
-          </Button>
-        </div>
-      </div>
-    )
+    return {
+      title: "Blog Post Not Found",
+    }
+  }
+
+  return {
+    title: `${blog.title} | Altamsh Bairagdar`,
+    description: blog.summary,
+  }
+}
+
+function formatDate(dateString: string) {
+  const date = new Date(dateString)
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  })
+}
+
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const blog = getBlogBySlug(slug)
+
+  if (!blog) {
+    notFound()
   }
 
   return (
     <div className="container mx-auto px-4 py-16 min-h-screen">
       <div className="fixed top-3 right-3 sm:top-4 sm:right-4 z-50">
-        <Button
-          variant="outline"
-          size="icon"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="w-10 h-10 p-0 rounded-full flex items-center justify-center border-slate-300 dark:border-slate-600 bg-white/90 dark:bg-slate-900/90 hover:border-lime-400 hover:text-lime-600 dark:hover:text-lime-400 transition-colors shadow-md"
-          aria-label="Toggle theme"
-        >
-          {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-        </Button>
+        <ThemeToggle />
       </div>
       <div className="max-w-4xl mx-auto">
-        <Button
-          variant="ghost"
-          onClick={() => router.push("/blogs")}
-          className="mb-8"
+        <Link
+          href="/blogs"
+          className="inline-flex items-center text-muted-foreground hover:text-foreground mb-8 transition-colors"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Blogs
-        </Button>
+        </Link>
 
         <article>
           {blog.featured_image && (
@@ -131,28 +95,21 @@ export default function BlogPostPage() {
                 </div>
               )}
             </div>
-            {blog.published_at && ( 
-              <div className="flex items-center text-muted-foreground">
-                <Calendar className="h-4 w-4 mr-2" />
-                {formatDate(blog.published_at)}
-              </div>
-            )}
+            <div className="flex items-center text-muted-foreground">
+              <Calendar className="h-4 w-4 mr-2" />
+              {formatDate(blog.date)}
+            </div>
           </header>
 
-          {blog.excerpt && (
+          {blog.summary && (
             <div className="text-xl text-muted-foreground mb-8 border-l-4 border-primary pl-4">
-              {blog.excerpt}
+              {blog.summary}
             </div>
           )}
 
-          <div className="prose prose-lg dark:prose-invert max-w-none mt-8">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {blog.content}
-            </ReactMarkdown>
-          </div>
+          <BlogMarkdown content={blog.content} />
         </article>
       </div>
     </div>
   )
 }
-

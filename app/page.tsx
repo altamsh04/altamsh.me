@@ -354,9 +354,8 @@ export default function Portfolio() {
             </Button>
             <Button
               size="sm"
-              className="bg-lime-400 hover:bg-lime-500 text-slate-900 font-bold transition-colors text-xs sm:text-sm px-2 py-1 h-8 min-w-[90px] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="bg-lime-400 hover:bg-lime-500 text-slate-900 font-bold transition-colors text-xs sm:text-sm px-2 py-1 h-8 min-w-[90px]"
               onClick={() => router.push("/blogs")}
-              disabled={process.env.NEXT_PUBLIC_BLOGS_FEATURE !== "true"}
             >
               <Book className="w-3 h-3 mr-1" />
               Blogs

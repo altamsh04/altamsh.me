@@ -1,9 +1,0 @@
-blog-api
-.git
-.gitignore
-README.md
-.env
-.env.local
-*.log
-
-
