@@ -18,4 +18,14 @@ blogs:
       - "Embeddings"
       - "NLP"
     featured_image: ""
+  - title: "Categorization Vs Agentic tools"
+    slug: "categorization-vs-agentic-tools"
+    date: "2026-01-29"
+    summary: "How i actually move from categorizing LLM tools call to pure agentic tools"
+    category: "AI"
+    tags:
+      - "LLMs"
+      - "Agents"
+      - "Tools"
+    featured_image: ""
 ---
