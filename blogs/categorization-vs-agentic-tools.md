@@ -9,7 +9,7 @@ Once we start giving AI these powers, system design becomes much more important.
 Let us start by understanding one of the most important ideas in this journey.
 
 ## Categorization
-<img width="1330" height="307" alt="Image" src="https://github.com/user-attachments/assets/a920de7d-4def-412d-91c5-f9644b4b7eff" />
+![Categorization flow diagram](/blog-images/categorization-vs-agentic-tools/categorization.png)
 
 Categorization is not a formal AI term. It is a concept I use based on how I design AI systems. The idea is very simple. Before AI does anything, it should first understand what kind of task it is dealing with.
 
@@ -24,7 +24,7 @@ In a well designed AI system, this responsibility is handled by a separate categ
 Once the task is categorized, the system clearly knows which tool or API should be used next. This keeps the AI organized, predictable, and easy to scale. Categorization is the base that allows AI to move from just answering questions to performing meaningful actions in the real world.
 
 ## Agentic Tools
-<img width="866" height="227" alt="Image" src="https://github.com/user-attachments/assets/028716b5-c710-4047-b5a5-5802b2b98cb6" />
+![Agentic tools flow diagram](/blog-images/categorization-vs-agentic-tools/agentic-tools.png)
 
 After categorization, the next important question is who actually does the work.
 
