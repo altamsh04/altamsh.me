@@ -28,4 +28,14 @@ blogs:
       - "Agents"
       - "Tools"
     featured_image: ""
+  - title: "(Draft) Perplexity breakdown"
+    slug: "perplexity-breakdown"
+    date: "2026-02-19"
+    summary: "Understanding how perplexity search engine works?"
+    category: "AI"
+    tags:
+      - "Search"
+      - "Agents"
+      - "LLMs"
+    featured_image: ""
 ---
