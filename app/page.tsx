@@ -85,53 +85,38 @@ const experienceData = {
       endDate: null,
       current: true,
       description:
-        "Contributing to the development of a new platform for Banza App, enhancing user experience through full stack development and implementing robust data security measures.",
-      achievements: [
-        "Contributed to the development of a new platform for Banza App, enhancing user experience.",
-        "Implemented OPzkTLS based data security, ensuring robust protection of sensitive information.",
-        "Engaged in full stack development, gaining comprehensive technical expertise.",
-      ],
-      technologies: ["Full-Stack Development", "OPzkTLS"],
+        "Currently working on improving the AI Twin Chat performance and scalability for 250k+ users while contributing to the development Banza App",
+      technologies: ["Artificial intelligence", "Full-Stack Development", "OPzkTLS"],
     },
     {
       id: 2,
-      title: "Software Developer",
-      company: "Embeetek Technologies · SDE Freelance",
+      title: "Software Developer Intern",
+      company: "Embeetek · Internship",
       icon: "https://res.cloudinary.com/dhbuw3k2w/image/upload/v1744040070/embeetek.com/logo.png",
       location: "Miraj Maharashtra, India · Remote",
       startDate: "2025-01-01",
       endDate: "2025-06-01",
       current: false,
       description:
-        "As a Freelance Software Developer at Embeetek Technologies, I have successfully delivered over five software projects, specializing in cutting-edge technologies such as Artificial Intelligence, Image Processing and full-stack web development.",
-      achievements: [
-        "Led the development of the official company website (www.embeetek.com) to highlight services, portfolio, and unique features.",
-        "Developed RESTful APIs for managing vital health data, integrated with IoT devices and real-time databases using Firebase.",
-        "Implemented accident reduction systems using computer vision and real-time communication via the MQTT protocol.",
-        "Developed Smart AI Glasses for interpreting sign language, leveraging Google's Teachable Machine for model training and deployment.",
-      ],
+        "Wrote AI glasses logic for interpreting sign language, and built embeetek.com completely from scratch.",
       technologies: ["Computer Vision", "AI", "ML", "Firebase", "React", "NodeJS", "MQTT"],
     },
     {
       id: 3,
-      title: "Software Developer",
-      company: "Knam Construction · SDE Freelance",
+      title: "Software Developer Intern",
+      company: "Knam Construction · Internship",
       icon: "/knam-logo.png",
       location: "Miraj Maharashtra, India · Remote",
       startDate: "2024-11-01",
       endDate: "2025-02-28",
       current: false,
       description:
-        "As a Freelance Software Developer at Knam Construction, I have been responsible for designing and building software solutions tailored to streamline construction management operations.",
-      achievements: [
-        "Led the development of impactful software project that enhanced operational workflows and significantly reduced manual effort.",
-        "Built 'SiteIQ', a custom platform for Site management, Payment tracking, Vendor  coordination and Material logistics.",
-        "This solution reduced manual paperwork by over 70% and improved overall team efficiency.",
-      ],
+        "Build 'SiteIQ' for site management, payment tracking, vendor coordination, and material logistics, which reduced manual paperwork by over 70% and improved overall workflow efficiency.",
       technologies: ["React", "NodeJS", "RESTful APIs", "Firebase"],
     },
   ],
-}
+};
+
 
 const achievementsData = [
   {
