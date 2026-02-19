@@ -473,7 +473,7 @@ export default function Portfolio() {
                     <p className="text-xs xs:text-sm sm:text-base text-slate-600 dark:text-slate-400 break-words">{exp.description}</p>
                     
                     {/* Achievements */}
-                    <div className="space-y-1 xs:space-y-2">
+                    {/* <div className="space-y-1 xs:space-y-2">
                       <h5 className="font-medium text-slate-900 dark:text-slate-100 text-xs xs:text-sm sm:text-base">KEY ACHIEVEMENTS:</h5>
                       <ul className="space-y-1 xs:space-y-1.5">
                         {exp.achievements.map((achievement, i) => (
@@ -483,7 +483,7 @@ export default function Portfolio() {
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    </div> */}
                     
                     {/* Technologies */}
                     <div className="flex flex-wrap gap-1 xs:gap-2">
