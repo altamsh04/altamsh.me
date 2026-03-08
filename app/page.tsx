@@ -13,6 +13,15 @@ const projectsData = {
   "projects": [
     {
       "id": 1,
+      "title": "OpenRef - Agentic Web Search SDK (300+ NPM Downloads)",
+      "icon": { "light": "/openref-light-logo.png", "dark": "/openref-dark-logo.png" },
+      "description": "TypeScript SDK for web grounded answers with optional inline citations. OpenRef runs a simple pipeline (web search -> extraction/chunking -> streaming response) with provider fallbacks, deduplication, and optional reranking/query expansion.",
+      "codeUrl": "https://github.com/altamsh04/openref",
+      "demoUrl" : "https://openref.vercel.app/",
+      "technologies": ["TypeScript", "Agent", "Web Search", "Citations", "Streaming"]
+    },
+    {
+      "id": 2,
       "title": "ApiloAI - AI-Powered Mock API Generator",
       "icon": "/bot.svg",
       "description": "Desktop application that creates mock APIs quickly using AI. Describe what data you need in plain English, and ApiloAI generates realistic mock API endpoints on local serverfor frontend projects.",
@@ -20,7 +29,7 @@ const projectsData = {
       "technologies": ["TypeScript", "React", "Electron", "Express.js", "Tailwind CSS", "Gemini API", "Vite"]
     },
     {
-      "id": 2,
+      "id": 3,
       "title": "InfraAI - AI-Powered System Design Platform",
       "icon": "/infra-ai-logo.svg",
       "description": "Built comprehensive AI-powered web application converting natural language descriptions to detailed system architecture diagrams using Gemini 1.5 Flash with multi-turn conversation support and React Flow for interactive visual rendering of 50+ components and relationships, achieving 95% accuracy in architecture generation",
@@ -28,7 +37,7 @@ const projectsData = {
       "technologies": ["TypeScript", "Next.js", "React Flow", "Supabase", "Gemini 1.5", "NLP", "GENAI"]
     },
     {
-      "id": 3,
+      "id": 4,
       "title": "AIPoweredLMS Backend",
       "icon": "/school.svg",
       "description": "Developed highly scalable RAG backend system processing diverse educational content (PDFs, PPTs, documents) via AWS S3 with vector embeddings, featuring AI-driven note summarization, adaptive quiz generation across difficulty levels, and interactive concept visualizations achieving 90% accuracy",
@@ -36,7 +45,7 @@ const projectsData = {
       "technologies": ["Python", "Django", "Vector DB", "AWS S3", "Gemini 1.5 Pro"]
     },
     {
-      "id": 4,
+      "id": 5,
       "title": "Accuia - Chat With Database",
       "icon": "/bot.svg",
       "description": "Built sophisticated AI platform enabling seamless natural language PostgreSQL interaction using advanced SQL RAG architecture with intelligent conversational interface, multi-turn context retention, and support for complex layered database queries achieving 95% query accuracy and eliminating SQL knowledge requirements",
@@ -45,8 +54,8 @@ const projectsData = {
       "technologies": ["TypeScript", "Next.js", "FastAPI", "PostgreSQL", "Supabase", "Gemini 1.5 Pro"]
     },
     {
-      "id": 5,
-      "title": "Reminder-CLI (400+ Downloads)",
+      "id": 6,
+      "title": "Reminder-CLI (400+ NPM Downloads)",
       "icon": "/terminal.svg",
       "description": "Developed feature-rich lightweight CLI productivity tool with advanced time-based scheduling capabilities, cross-platform compatibility, and intuitive command interface, published as open-source npm package achieving 390+ downloads with active community contributions and 98% user satisfaction rating",
       "demoUrl": "https://www.npmjs.com/package/@altamsh04/reminder-cli",
@@ -54,7 +63,7 @@ const projectsData = {
       "technologies": ["JavaScript", "NodeJS", "CLI", "Task Manager", "Productivity"]
     },
     {
-      "id": 6,
+      "id": 7,
       "title": "NPM Analytics Pro",
       "icon": "/package.svg",
       "description": "Advanced package insights & comparison tool for NPM modules including trends, bundle analysis, and health scoring.",
@@ -62,7 +71,7 @@ const projectsData = {
       "technologies": ["NextJS", "TailwindCSS", "Vercel", "NPM API"]
     },
     {
-      "id": 7,
+      "id": 8,
       "title": "Ghibli Meme Maker",
       "icon": "/pencil.svg", 
       "description": "Transform your favorite Studio Ghibli moments into hilarious memes with our easy-to-use meme creator.",
@@ -375,7 +384,17 @@ export default function Portfolio() {
               >
                 <CardContent className="p-4 xs:p-5 sm:p-6 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-2">
-                    <img src={project.icon} alt={project.title + ' icon'} className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-md bg-slate-100 dark:bg-slate-800 object-contain max-w-full h-auto" />
+                    <img
+                      src={
+                        typeof project.icon === "string"
+                          ? project.icon
+                          : theme === "dark"
+                            ? project.icon.dark
+                            : project.icon.light
+                      }
+                      alt={project.title + " icon"}
+                      className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-md bg-slate-100 dark:bg-slate-800 object-contain max-w-full h-auto"
+                    />
                     <h4 className="text-base xs:text-lg font-bold text-slate-900 dark:text-slate-100 break-words">{project.title}</h4>
                   </div>
                   <p className="text-xs xs:text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-2 xs:mb-3 flex-1 break-words">{project.description}</p>
