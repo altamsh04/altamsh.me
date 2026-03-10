@@ -12,6 +12,15 @@ import { useRouter } from "next/navigation"
 const projectsData = {
   "projects": [
     {
+      "id": 0,
+      "title": "OpenLoL - Your machine, As an MCP Server (350+ NPM Downloads)",
+      "icon": "/openlol-logo.png",
+      "description": "Open Local Operations Layer, an open source tool that turns any local folder into an MCP server in sandbox, and letting AI agents like Cursor and Claude directly execute terminal commands, manage files, and inspect system info on your machine.",
+      "codeUrl": "https://github.com/altamsh04/openlol",
+      "demoUrl": "https://www.npmjs.com/package/openlol",
+      "technologies": ["TypeScript", "MCP Server", "Agent", "CLI"]
+    },
+    {
       "id": 1,
       "title": "OpenRef - Agentic Web Search SDK (300+ NPM Downloads)",
       "icon": { "light": "/openref-light-logo.png", "dark": "/openref-dark-logo.png" },
@@ -384,17 +393,27 @@ export default function Portfolio() {
               >
                 <CardContent className="p-4 xs:p-5 sm:p-6 flex flex-col h-full">
                   <div className="flex items-center gap-2 mb-2">
-                    <img
-                      src={
-                        typeof project.icon === "string"
-                          ? project.icon
-                          : theme === "dark"
-                            ? project.icon.dark
-                            : project.icon.light
-                      }
-                      alt={project.title + " icon"}
-                      className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-md bg-slate-100 dark:bg-slate-800 object-contain max-w-full h-auto"
-                    />
+                    {typeof project.icon === "string" && !project.icon.startsWith("/") && !project.icon.startsWith("http") ? (
+                      <span
+                        role="img"
+                        aria-label={project.title + " icon"}
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 flex items-center justify-center rounded-md bg-slate-100 dark:bg-slate-800 text-base xs:text-lg sm:text-xl leading-none"
+                      >
+                        {project.icon}
+                      </span>
+                    ) : (
+                      <img
+                        src={
+                          typeof project.icon === "string"
+                            ? project.icon
+                            : theme === "dark"
+                              ? project.icon.dark
+                              : project.icon.light
+                        }
+                        alt={project.title + " icon"}
+                        className="w-6 h-6 xs:w-7 xs:h-7 sm:w-8 sm:h-8 rounded-md bg-slate-100 dark:bg-slate-800 object-contain max-w-full h-auto"
+                      />
+                    )}
                     <h4 className="text-base xs:text-lg font-bold text-slate-900 dark:text-slate-100 break-words">{project.title}</h4>
                   </div>
                   <p className="text-xs xs:text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-2 xs:mb-3 flex-1 break-words">{project.description}</p>
